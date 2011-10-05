@@ -1,5 +1,6 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
+    <span class="icon <%= 'toggle expanded' if page.children.present? %>"></span>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
       <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? and
@@ -13,12 +14,12 @@
         </span>
       <% end %>
     </span>
-
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
+                  :class => 'edit',
                   :title => t('edit', :scope => 'admin.pages') %>
       <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
                   :class => "cancel confirm-delete",
@@ -27,7 +28,7 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested'>
-    <%= render :partial => 'page', :collection => page.children %>
+  <ul class='nested' data-ajax-content="<%= children_admin_page_path(page) %>">
+    <%#= render :partial => 'page', :collection => page.children %>
   </ul>
 </li>
