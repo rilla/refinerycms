@@ -1,6 +1,10 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class="icon <%= 'toggle expanded' if page.children.present? %>"></span>
+    <% if page.children.present? %>
+      <span class="icon toggle" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
+    <% else %>
+      <span class="icon"></span>
+    <% end %>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
       <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? and

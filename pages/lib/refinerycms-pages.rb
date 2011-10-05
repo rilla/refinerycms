@@ -35,6 +35,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.hide_from_menu = true
           plugin.pathname = root
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
