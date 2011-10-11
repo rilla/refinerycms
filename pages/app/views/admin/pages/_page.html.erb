@@ -1,4 +1,4 @@
-<li class='clearfix record' id="<%= dom_id(page) -%>">
+<li class='clearfix record' id="page_<%= page.id -%>">
   <div class='clearfix'>
     <% if page.children.present? %>
       <span class="icon toggle" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
