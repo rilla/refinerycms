@@ -5,7 +5,7 @@ module Admin
             :conditions => nil,
             :order => "lft ASC",
             :include => [:slugs, :translations, :children],
-            :paging => false
+            :paging => false,
             :class_name => "Page",
             :singular_name => "page",
             :plural_name => "pages"
