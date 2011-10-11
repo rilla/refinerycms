@@ -1,7 +1,7 @@
 require 'globalize3'
 
 class Page < ActiveRecord::Base
-
+   default_scope order('position ASC')
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
 
