@@ -6,6 +6,10 @@ module Admin
             :order => "lft ASC",
             :include => [:slugs, :translations, :children],
             :paging => false
+            :class_name => "Page",
+            :singular_name => "page",
+            :plural_name => "pages"
+            
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
