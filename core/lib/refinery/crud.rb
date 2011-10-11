@@ -248,6 +248,7 @@ module Refinery
 
             # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
+              logger.debug "Updating positions for #{class_name}"
               previous = nil
               # The list doesn't come to us in the correct order. Frustration.
               0.upto((newlist ||= params[:ul]).length - 1) do |index|
@@ -262,6 +263,7 @@ module Refinery
                     @current_#{singular_name}.move_to_root
                   end
                 else
+                  logger.debug "Updating positions: @current_#{singular_name}.update_attribute(:position, index)"
                   @current_#{singular_name}.update_attribute(:position, index)
                 end
 
