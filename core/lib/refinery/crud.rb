@@ -283,6 +283,7 @@ module Refinery
                 child = node['children'][child_index.to_s]
                 child_id = child['id'].split(/#{singular_name}\_?/)
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
+                child_#{singular_name}.update_attribute(:position, child_index)
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 
                 if child['children'].present?
