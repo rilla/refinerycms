@@ -252,7 +252,7 @@ module Refinery
               # The list doesn't come to us in the correct order. Frustration.
               0.upto((newlist ||= params[:ul]).length - 1) do |index|
                 hash = newlist[index.to_s]
-                moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
+                moved_item_id = hash['id'].split(/page\\_?/)
                 @current_#{singular_name} = #{class_name}.where(:id => moved_item_id).first
 
                 if @current_#{singular_name}.respond_to?(:move_to_root)
@@ -279,7 +279,7 @@ module Refinery
             def update_child_positions(node, #{singular_name})
               0.upto(node['children'].length - 1) do |child_index|
                 child = node['children'][child_index.to_s]
-                child_id = child['id'].split(/#{singular_name}\_?/)
+                child_id = child['id'].split(/page\_?/)
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 
